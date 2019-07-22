@@ -13,3 +13,13 @@ ENV PATH /root/osxcross/target/bin:${PATH}
 RUN mkdir -p /.cargo && echo '[target.x86_64-apple-darwin]\n\
 linker = "x86_64-apple-darwin14-clang"\n\
 ar = "x86_64-apple-darwin14-ar"' >> /.cargo/config
+RUN apt-get update && apt-get install -y \
+    clang \
+    gcc \
+    g++ \
+    zlib1g-dev \
+    libmpc-dev \
+    libmpfr-dev \
+    libgmp-dev
+ENV CC o64-clang
+ENV CXX o64-clang++
